@@ -1,0 +1,10 @@
+{
+  "123": {
+    "password": "123",
+    "hwid": "S-1-5-21-2554052136-3886100-2438355742-1002"
+  },
+  "username2": {
+    "password": "password2",
+    "hwid": "hwid_value2"
+  }
+}
