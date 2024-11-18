@@ -1,0 +1,15 @@
+{
+  "credenciais": [
+    {
+      "usuario": "admin",
+      "senha": "1234",
+      "hwid": "ABC12345"
+    },
+    {
+      "usuario": "usuario2",
+      "senha": "abcd",
+      "hwid": "XYZ67890"
+    }
+  ]
+}
+
